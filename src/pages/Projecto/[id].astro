@@ -1,0 +1,68 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import { getCollection, render } from "astro:content"
+
+export async function getStaticPaths() {
+    const projects = await getCollection('project')
+    
+    return projects.map((project) => ({
+        params: {id: project.slug},
+        props: {project}
+    }));
+}
+
+const {project} = Astro.props
+const slug = project.slug
+const {title, description, tags, image, link, code, gallery} = project.data
+const {Content} = await render(project)
+
+const secondImage = gallery ? gallery[1] : image; 
+const thirdImage = gallery ? gallery[2] : image; 
+const fourImage = gallery ? gallery[3] : image; 
+
+ 
+---
+
+<Layout>
+    <section class="h-screen overflow-hidden flex flex-col">
+        <div class="flex flex-1 flex-col md:flex-row  gap-4 m-4 bg-blue-900/20 rounded-3xl p-6 border border-yellow-700/20 overflow-hidden relative">
+            <a href="/#proyectos" class="absolute top-4 left-4 z-10 rounded-xl bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:text-white transition-all backdrop-blur-md px-3 py-1">Volver atras</a>
+
+            <div class="w-full md:w-1/2 flex flex-col justify-between h-full">
+                <h2 class="text-center font-bold text-4xl mb-4 mt-6 md:mt-0">{title}</h2>
+                
+                <div class="grid grid-cols-2 gap-2">
+                    <img src={image} transition:name={`img-${slug}`} class="w-full h-auto object-contain" alt="">
+                    <img src={secondImage}  class="w-full h-auto object-contain" alt="">
+                    <img src={thirdImage}  class="w-full h-auto object-contain" alt="">
+                    <img src={fourImage}  class="w-full h-auto object-contain" alt="">
+                    <!-- <div class="w-full max-w-lg rounded-xl overflow-hidden shadow-2xl border border-white/10 flex">
+                        <img src={image} transition:name={`img-${slug}`} class="w-full h-auto object-contain" alt="">
+                    </div> -->
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mt-6 w-full max-w-md mx-auto">
+                    {link && link.trim() !== "" ? ( <a href={link} class="py-2 text-center font-bold bg-blue-600 rounded-xl">Demo</a>) : (<span class="flex items-center">Demo no disponible</span>) }
+                    <a href={code} class="py-2 text-center font-bold bg-[#24292e] rounded-xl">Código</a>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 h-full overflow-y-auto pr-8 custom-scrollbar">
+                <article class="prose prose-invert max-w-none">
+                    <Content />
+                </article>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+        background: #121212;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #00217a;
+        border-radius: 4px;
+    }
+</style>

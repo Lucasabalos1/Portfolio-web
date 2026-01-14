@@ -1,0 +1,19 @@
+---
+import Frontend from './Cards/Frontend.astro'
+import Backend from './Cards/Backend.astro'
+import Ia from './Cards/Ia.astro'
+import Herramientas from './Cards/Herramientas.astro'
+---
+
+<section id="skills" class="min-h-[30vh]">
+    <div class="w-11/12 my-4 mx-auto">
+        <h2 class="text-center py-10 text-5xl font-bold tracking-widest bg-linear-to-r from-white to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(96,165,250,0.5)] [text-shadow:0_0_15px_rgba(96,165,250,0.3)]">Mis Habilidades</h2>
+        <span class="block text-center text-xl">Mi stack tecnológico completo. Cada habilidad ha sido puesta a prueba y aplicada en proyectos personales y entornos académicos, enfocados en la resolución de problemas reales.</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 mt-10">
+            <Frontend />
+            <Backend />
+            <Ia />
+            <Herramientas />
+        </div>
+    </div>
+</section>

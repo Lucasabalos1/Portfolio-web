@@ -1,3 +1,8 @@
+---
+import '../styles/global.css'
+import ClientRouter from 'astro/components/ClientRouter.astro'
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,15 +13,52 @@
 		<title>Astro Basics</title>
 	</head>
 	<body>
+    <ClientRouter />
 		<slot />
 	</body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  :root{
+    --bg-1: #0f1117;
+    --bg-2: #141627;
+    --bg-3: #191f4d;
+    --text: #e2e8f0;
+  }
+
+  html, body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+    background-size: 300% 300%;
+    animation: gradientShift 12s ease-in-out infinite;
+  }
+
+  @keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html, body {
+      animation: none;
+    }
+  }
+
+  body::-webkit-scrollbar {
+    width: 8px;
+    background: #121212;
+  }
+  body::-webkit-scrollbar-thumb {
+    background: #00217a;
+    border-radius: 4px;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+
 </style>

@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content"
+import ProjectoActual from "./ProjectoActual.astro"
+
+const projects = await getCollection('project')
+
+---
+
+<section id="proyectos" class="min-h-[30vh]">
+    <div class="w-11/12 my-4 mx-auto">
+        <h2 class="text-center py-10 text-5xl font-bold tracking-widest bg-linear-to-r from-white to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(96,165,250,0.5)] [text-shadow:0_0_15px_rgba(96,165,250,0.3)]">Mis Proyectos</h2>
+        <span class="block text-center text-xl">Proyectos destacados que reflejan mi evolución técnica y compromiso con la calidad del código.</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 mt-10">
+            <ProjectoActual />
+            {projects.map((project) => {
+                const {slug, data} = project
+                const {title, description, tags, image, link, code, gallery} = data
+
+                return(
+                    <article class="bg-blue-950/20 backdrop-blur-sm border border-blue-500/30 p-1 rounded-3xl group flex flex-col h-full">
+                        <div class="rounded-2xl overflow-hidden border border-white/10">
+                            <img src={image} class="w-full object-cover transition-transform duration-500 group-hover:scale-105" transition:name={`img-${slug}`} alt="">
+                        </div>
+    
+                        <h4 class="text-2xl font-bold py-3 pl-3">{title}</h4>
+    
+                        <div class="px-3 flex flex-wrap gap-3 py-2">
+                            {tags?.map((tag) => (
+                                <span class="text-xs text-center bg-yellow-500/5 border border-yellow-600/20 text-yellow-500 px-3 py-1 rounded-xl font-bold">{tag}</span>
+                            ))}
+                        </div>
+    
+                    <p class="text-left px-3 text-white/80 pb-6">{description}</p>
+
+                    <div class="grid grid-cols-2 gap-3 mt-auto mb-4 w-full px-4 max-w-md mx-auto">
+                        {link && link.trim() !== "" ? ( <a href={link} class="w-full py-2 text-center font-bold bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_10px_rgba(59,130,246,0.4)] rounded-xl transition-all">Demo</a>) : (<span class="flex items-center">Demo no disponible</span>) }
+                        <a href={code} class="w-full py-2 text-center font-bold bg-[#24292e] hover:bg-[#2f363d] text-white border border-white/10 rounded-xl transition-all">Código</a>
+                        <a href={`/Projecto/${slug}`} class="col-span-2 w-full py-2 text-center font-bold border border-yellow-500/50 text-yellow-500 hover:bg-yellow-500/10 rounded-xl transition-all uppercase tracking-wider text-sm">Más Información</a>
+                    </div>
+                </article>
+                )
+            })}
+        </div>
+    </div>
+</section>
