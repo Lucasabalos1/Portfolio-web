@@ -1,6 +1,6 @@
 ---
 title: "ApptitudIA"
-description: "Sistema inteligente de gestión de reclutamiento que utiliza IA para clasificar y rankear candidatos."
+description: "Sistema inteligente de gestión de reclutamiento que utiliza IA para clasificar y rankear candidatos. Credenciales (Usuario: Fernando, Contraseña: admin123)"
 tags: ["Python", "Scikit-Learn", "Javascript", "Sqlite3"]
 image: "/Images/Projects/ApptitudIA/Dashboard.jpg"
 link: "https://disponibilizacionweb.onrender.com/"
