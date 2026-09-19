@@ -6,19 +6,15 @@ export async function getStaticPaths() {
     const projects = await getCollection('project')
     
     return projects.map((project) => ({
-        params: {id: project.slug},
+        params: {id: project.id},
         props: {project}
     }));
 }
 
 const {project} = Astro.props
-const slug = project.slug
+const slug = project.id
 const {title, description, tags, image, link, code, gallery} = project.data
-const {Content} = await render(project)
-
-const secondImage = gallery ? gallery[1] : image; 
-const thirdImage = gallery ? gallery[2] : image; 
-const fourImage = gallery ? gallery[3] : image; 
+const {Content} = await render(project) 
 
  
 ---
@@ -32,18 +28,16 @@ const fourImage = gallery ? gallery[3] : image;
                 <h2 class="text-center font-bold text-4xl mb-4 mt-6 md:mt-0">{title}</h2>
                 
                 <div class="grid grid-cols-2 gap-2">
-                    <img src={image} transition:name={`img-${slug}`} class="w-full h-auto object-contain" alt="Primer-Imagen-Proyecto">
-                    <img src={secondImage}  class="w-full h-auto object-contain" alt="Segunda-Imagen-Proyecto">
-                    <img src={thirdImage}  class="w-full h-auto object-contain" alt="Tercera-Imagen-Proyecto">
-                    <img src={fourImage}  class="w-full h-auto object-contain" alt="Cuarta-Imagen-Proyecto">
-                    <!-- <div class="w-full max-w-lg rounded-xl overflow-hidden shadow-2xl border border-white/10 flex">
-                        <img src={image} transition:name={`img-${slug}`} class="w-full h-auto object-contain" alt="">
-                    </div> -->
+                    {gallery && gallery.length > 0 ? gallery.slice(0, 4).map((img, index) => (
+                        <img src={img} transition:name={index === 0 ? `img-${slug}` : undefined} class="w-full h-auto object-contain rounded-xl" alt={`Imagen-${index + 1}-Proyecto`}>
+                    )) : (
+                        <img src={image} transition:name={`img-${slug}`} class="w-full h-auto object-contain rounded-xl col-span-2" alt="Imagen-Proyecto">
+                    )}
                 </div>
 
                 <div class="grid grid-cols-2 gap-3 mt-6 w-full max-w-md mx-auto">
-                    {link && link.trim() !== "" ? ( <a href={link} class="py-2 text-center font-bold bg-blue-600 rounded-xl">Demo</a>) : (<span class="flex items-center">Demo no disponible</span>) }
-                    <a href={code} class="py-2 text-center font-bold bg-[#24292e] rounded-xl">Código</a>
+                    {link && link.trim() !== "" ? ( <a href={link} target="_blank" rel="noopener noreferrer" class="py-2 text-center font-bold bg-blue-600 hover:bg-blue-500 rounded-xl transition-all">Demo</a>) : (<span class="flex items-center text-white/40">Demo no disponible</span>) }
+                    {code && code.trim() !== "" ? ( <a href={code} target="_blank" rel="noopener noreferrer" class="py-2 text-center font-bold bg-[#24292e] hover:bg-[#2f363d] border border-white/10 rounded-xl transition-all">Código</a>) : (<span class="flex items-center text-white/40">Código no disponible</span>) }
                 </div>
             </div>
 
