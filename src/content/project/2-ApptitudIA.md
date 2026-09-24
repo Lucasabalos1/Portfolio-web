@@ -5,6 +5,7 @@ tags: ["Python", "Scikit-Learn", "Javascript", "Sqlite3"]
 image: "/Images/Projects/ApptitudIA/Dashboard.jpg"
 link: "https://disponibilizacionweb.onrender.com/"
 code: "https://github.com/Bianciotto/ApptitudAI/tree/main"
+docs: "https://drive.google.com/drive/folders/1wfR7x9n4cdlffdiKF9zYWhcz9f_YF60z"
 gallery: ["/Images/Projects/ApptitudIA/Dashboard.jpg", "/Images/Projects/ApptitudIA/Login.jpg", "/Images/Projects/ApptitudIA/Crear-oferta.jpg", "/Images/Projects/ApptitudIA/Ver-ofertas.jpg", "/Images/Projects/ApptitudIA/Cargar-oferta.jpg", "/Images/Projects/ApptitudIA/Postulantes.jpg" ,"/Images/Projects/ApptitudIA/Etiquetas.jpg" ,"/Images/Projects/ApptitudIA/Metricas.jpg"]
 ---
 

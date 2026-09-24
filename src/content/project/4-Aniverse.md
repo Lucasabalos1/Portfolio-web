@@ -5,6 +5,7 @@ tags: ["HTML", "Css", "Javascript"]
 image: "/Images/Projects/Aniverse/Dashboard.jpg"
 link: "https://aniverse-drab.vercel.app/"
 code: "https://github.com/Lucasabalos1/Aniverse"
+docs: ""
 gallery: ["/Images/Projects/Aniverse/Dashboard.jpg", "/Images/Projects/Aniverse/Anime.jpg", "/Images/Projects/Aniverse/search.jpg", "/Images/Projects/Aniverse/popular-list.jpg", "/Images/Projects/Aniverse/user-list.jpg"] 
 ---
 

@@ -13,14 +13,14 @@ export async function getStaticPaths() {
 
 const {project} = Astro.props
 const slug = project.id
-const {title, description, tags, image, link, code, gallery} = project.data
+const {title, description, tags, image, link, code, docs, gallery} = project.data
 const {Content} = await render(project) 
 
  
 ---
 
 <Layout>
-    <section class="h-screen overflow-hidden flex flex-col">
+    <section class="min-h-screen md:h-screen md:overflow-hidden flex flex-col">
         <div class="flex flex-1 flex-col md:flex-row  gap-4 m-4 bg-blue-900/20 rounded-3xl p-6 border border-yellow-700/20 overflow-hidden relative">
             <a href="/#proyectos" class="absolute top-4 left-4 z-10 rounded-xl bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:text-white transition-all backdrop-blur-md px-3 py-1">Volver atras</a>
 
@@ -36,12 +36,13 @@ const {Content} = await render(project)
                 </div>
 
                 <div class="grid grid-cols-2 gap-3 mt-6 w-full max-w-md mx-auto">
-                    {link && link.trim() !== "" ? ( <a href={link} target="_blank" rel="noopener noreferrer" class="py-2 text-center font-bold bg-blue-600 hover:bg-blue-500 rounded-xl transition-all">Demo</a>) : (<span class="flex items-center text-white/40">Demo no disponible</span>) }
-                    {code && code.trim() !== "" ? ( <a href={code} target="_blank" rel="noopener noreferrer" class="py-2 text-center font-bold bg-[#24292e] hover:bg-[#2f363d] border border-white/10 rounded-xl transition-all">Código</a>) : (<span class="flex items-center text-white/40">Código no disponible</span>) }
+                    {link && link.trim() !== "" ? ( <a href={link} target="_blank" rel="noopener noreferrer" class="col-span-2 py-2 text-center font-bold bg-blue-600 hover:bg-blue-500 rounded-xl transition-all">Demo</a>) : (<span class="col-span-2 flex items-center text-white/40">Demo no disponible</span>) }
+                    {code && code.trim() !== "" ? ( <a href={code} target="_blank" rel="noopener noreferrer" class={`py-2 text-center font-bold bg-[#24292e] hover:bg-[#2f363d] border border-white/10 rounded-xl transition-all ${docs ? "" : "col-span-2"}`}>Código</a>) : (<span class={`flex items-center text-white/40 ${docs ? "" : "col-span-2"}`}>Código no disponible</span>) }
+                    {docs && docs.trim() !== "" && ( <a href={docs} target="_blank" rel="noopener noreferrer" class="py-2 text-center font-bold bg-white/10 hover:bg-white/20 border border-white/20 text-white/90 rounded-xl transition-all">Documentación</a> ) }
                 </div>
             </div>
 
-            <div class="w-full md:w-1/2 h-full overflow-y-auto pr-8 custom-scrollbar">
+            <div class="w-full md:w-1/2 h-[65vh] md:h-full overflow-y-auto md:pr-8 custom-scrollbar">
                 <article class="prose prose-invert max-w-none">
                     <Content />
                 </article>

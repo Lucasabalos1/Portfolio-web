@@ -4,6 +4,7 @@ description: "Sistema Híbrido de Detección de Intrusiones basado en Redes Neur
 tags: ["Python", "TensorFlow", "Linux", "React"]
 image: "/Images/Projects/IDS/Dashboard.jpg"
 code: "https://github.com/Lucasabalos1/Tp-final-sor-2"
+docs: "https://drive.google.com/drive/folders/14EfdyR_-QtAOoRR0ui0mqXzKIVfCmaAu?usp=sharing"
 gallery: ["/Images/Projects/IDS/Dashboard.jpg", "/Images/Projects/IDS/Alerts.jpg", "/Images/Projects/IDS/Metricas.jpg", "/Images/Projects/IDS/VM.jpg"] 
 ---
 

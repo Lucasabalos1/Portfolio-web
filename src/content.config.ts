@@ -11,6 +11,7 @@ const project = defineCollection({
     image: z.union([z.url(), z.string().regex(/^\/.*/)]).optional(),
     link: z.url().optional(),
     code: z.url().optional(),
+    docs: z.union([z.url(), z.literal("")]).optional(),
     gallery: z.array(z.string()).optional()
   })
 });

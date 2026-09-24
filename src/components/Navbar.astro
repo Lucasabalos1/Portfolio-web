@@ -3,25 +3,86 @@
 
 <header class="sticky top-0 z-50 bg-[#0a0e1a]">
     <nav class="py-2">
-        <div class="mx-4 flex justify-between items-center h-16">
-            <a href="#hero">
-                <div class=" w-26 md:w-48">
-                    <img src="/Images/Logo/Logo.webp" alt="Logo">
-                </div>
+        <div class="relative z-50 mx-auto flex w-full max-w-7xl items-center justify-between px-4 h-16">
+            <a href="#hero" class="w-26 md:w-48">
+                <img src="/Images/Logo/Logo.webp" alt="Logo">
             </a>
 
-            <ul class="flex justify-between gap-2 md:gap-10">
-                <li><a href="#sobre-mi" class="text-[.65rem] md:text-xl font-bold">Sobre mi</a>
+            <ul class="hidden md:flex justify-between gap-10">
+                <li><a href="#sobre-mi" class="text-xl font-bold">Sobre mi</a>
                 </li>
-                <li><a href="#skills" class="text-[.65rem] md:text-xl font-bold">Skills</a>
+                <li><a href="#skills" class="text-xl font-bold">Skills</a>
                 </li>
-                <li><a href="#educacion" class="text-[.65rem] md:text-xl font-bold">Educacion</a>
+                <li><a href="#educacion" class="text-xl font-bold">Educacion</a>
                 </li>
-                <li><a href="#proyectos" class="text-[.65rem] md:text-xl font-bold">Proyectos</a>
+                <li><a href="#proyectos" class="text-xl font-bold">Proyectos</a>
                 </li>
-                <li><a href="#contactame" class="text-[.65rem] md:text-xl font-bold">Contactame</a>
+                <li><a href="#contactame" class="text-xl font-bold">Contactame</a>
                 </li>
             </ul>
+
+            <button id="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"
+                class="group md:hidden relative flex flex-col items-center justify-center gap-[5px] w-10 h-10 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors cursor-pointer motion-reduce:transition-none">
+                <span class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center motion-reduce:transition-none group-aria-expanded:translate-y-1.75 group-aria-expanded:rotate-45"></span>
+                <span class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 motion-reduce:transition-none group-aria-expanded:opacity-0"></span>
+                <span class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center motion-reduce:transition-none group-aria-expanded:-translate-y-1.75 group-aria-expanded:-rotate-45"></span>
+            </button>
         </div>
     </nav>
+
+    <div id="mobile-menu-backdrop" data-open="false"
+        class="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 md:hidden motion-reduce:transition-none data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto"></div>
+
+    <aside id="mobile-menu" data-open="false" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Menú de navegación"
+        class="fixed inset-y-0 right-0 z-40 w-62 max-w-[85vw] bg-[#0a0e1a]/95 backdrop-blur border-l border-white/10 shadow-2xl overflow-y-auto transform transition-transform duration-300 ease-out translate-x-full md:hidden motion-reduce:transition-none invisible pointer-events-none data-[open=true]:visible data-[open=true]:pointer-events-auto data-[open=true]:translate-x-0">
+        <nav class="h-full">
+            <ul class="flex flex-col pt-24 px-6 pb-8 gap-1">
+                <li><a href="#sobre-mi" data-close class="block px-4 py-3 rounded-xl text-lg font-bold text-white/80 hover:bg-blue-600/15 hover:text-white transition-colors">Sobre mí</a></li>
+                <li><a href="#skills" data-close class="block px-4 py-3 rounded-xl text-lg font-bold text-white/80 hover:bg-blue-600/15 hover:text-white transition-colors">Skills</a></li>
+                <li><a href="#educacion" data-close class="block px-4 py-3 rounded-xl text-lg font-bold text-white/80 hover:bg-blue-600/15 hover:text-white transition-colors">Educación</a></li>
+                <li><a href="#proyectos" data-close class="block px-4 py-3 rounded-xl text-lg font-bold text-white/80 hover:bg-blue-600/15 hover:text-white transition-colors">Proyectos</a></li>
+                <li><a href="#contactame" data-close class="block px-4 py-3 rounded-xl text-lg font-bold text-white/80 hover:bg-blue-600/15 hover:text-white transition-colors">Contáctame</a></li>
+            </ul>
+        </nav>
+    </aside>
 </header>
+
+<script>
+    (function () {
+        const menuButton = document.getElementById("menu-btn");
+        const menuDrawer = document.getElementById("mobile-menu");
+        const menuBackdrop = document.getElementById("mobile-menu-backdrop");
+
+        if (!menuButton || !menuDrawer || !menuBackdrop) return;
+
+        const buttonElement: HTMLElement = menuButton;
+        const drawerElement: HTMLElement = menuDrawer;
+        const backdropElement: HTMLElement = menuBackdrop;
+
+        const isDrawerOpen = () => drawerElement.dataset.open === "true";
+
+        const setOpen = (open: boolean) => {
+            const state = open ? "true" : "false";
+            drawerElement.dataset.open = state;
+            backdropElement.dataset.open = state;
+            buttonElement.setAttribute("aria-expanded", state);
+            buttonElement.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+            drawerElement.setAttribute("aria-hidden", open ? "false" : "true");
+            document.body.style.overflow = open ? "hidden" : "";
+        };
+
+        buttonElement.addEventListener("click", () => setOpen(!isDrawerOpen()));
+
+        backdropElement.addEventListener("click", () => setOpen(false));
+
+        drawerElement.querySelectorAll("a[data-close]").forEach((linkElement) => {
+            linkElement.addEventListener("click", () => setOpen(false));
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && isDrawerOpen()) {
+                setOpen(false);
+            }
+        });
+    })();
+</script>

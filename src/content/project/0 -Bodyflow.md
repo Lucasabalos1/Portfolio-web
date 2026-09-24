@@ -5,6 +5,7 @@ tags: ["React", "Typescript", "Python", "Flask", "Sqlite3"]
 image: "/Images/Projects/Bodyflow/Dashboard.png"
 link: "https://body-flow-beta.vercel.app/"
 code: "https://github.com/Lucasabalos1/BodyFlow"
+docs: "https://drive.google.com/drive/folders/1tn7VP9sWEi7MrOCnEaYYHtTXxR0toSeS?usp=drive_link"
 gallery: ["/Images/Projects/Bodyflow/Dashboard.png", "/Images/Projects/Bodyflow/Login.png", "/Images/Projects/Bodyflow/Cliente_Lista.png", "/Images/Projects/Bodyflow/Crear_rutina.png", "/Images/Projects/Bodyflow/Ejercicioos.png", "/Images/Projects/Bodyflow/Empleados.png", "/Images/Projects/Bodyflow/Ficha_Socio.png", "/Images/Projects/Bodyflow/Gestion_Rutinas.png", "/Images/Projects/Bodyflow/Listado_Rutinas.png", "/Images/Projects/Bodyflow/Metricas.png", "/Images/Projects/Bodyflow/Navbar.png", "/Images/Projects/Bodyflow/Notificaciones.png", "/Images/Projects/Bodyflow/Seleccioonar_ejercicios.png"]
 ---
 

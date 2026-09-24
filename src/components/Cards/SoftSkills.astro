@@ -1,0 +1,22 @@
+---
+import SkillChip from "./SkillChip.astro";
+
+const glowHover = "hover:shadow-[0_0_12px_rgba(59,130,246,0.2)]";
+
+const skills = [
+    { name: "Analisis de requerimientos", logo: "/Images/Logos/Analisis.webp", compact: true, accent: `border-white/10 bg-white/5 hover:border-white/50 hover:text-white ${glowHover}` },
+    { name: "Compromiso", logo: "/Images/Logos/compromiso.webp", accent: "border-yellow-400 bg-yellow-500/10 text-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.4)]" },
+    { name: "Proactividad", logo: "/Images/Logos/proactivo.webp", accent: `border-white/10 bg-white/5 hover:border-blue-500/50 hover:text-blue-400 ${glowHover}` },
+    { name: "Autonomía", logo: "/Images/Logos/Autonomia.webp", accent: `border-white/10 bg-white/5 hover:border-purple-500/50 hover:text-purple-400 ${glowHover}` },
+    { name: "Documentación técnica", logo: "/Images/Logos/Documentacion.webp", compact: true, accent: `border-white/10 bg-white/5 hover:border-orange-500/50 hover:text-orange-400 ${glowHover}` },
+    { name: "Trabajo en equipo", logo: "/Images/Logos/Equipo.webp", accent: `border-white/10 bg-white/5 hover:border-blue-500/50 hover:text-blue-400 ${glowHover}` },
+];
+---
+
+<article class="bg-blue-950/20 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6 md:col-span-2">
+    <h3 class="block text-center text-3xl font-bold mb-2">Soft Skills</h3>
+    <hr class="w-3/4 mx-auto border-blue-500/50 mb-2">
+    <ul class="w-full grid grid-cols-2 lg:grid-cols-3 gap-3">
+        {skills.map((skill) => <SkillChip {...skill} />)}
+    </ul>
+</article>

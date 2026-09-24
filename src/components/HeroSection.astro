@@ -1,25 +1,25 @@
 ---
+import BrowserCards from './BrowserCards.astro'
 ---
 
 <section id="hero" class="min-h-[80vh] flex items-center animate-fade-in-up"> 
-    <div class="mx-6 my-2 flex justify-between items-center gap-8 w-full">
+    <div class="mx-auto my-2 flex w-full max-w-7xl items-center justify-between gap-8 px-6">
         <div class=" w-full md:w-3/5"> 
             <h1 class="text-4xl md:text-5xl font-bold mb-2">Lucas Gabriel Ábalos</h1>
-            <h2 class="text-3xl font-bold mb-2 text-blue-400">Desarrollador Frontend</h2>
-            <h3 class="text-xl font-semibold mb-4 opacity-80">Tecnico Universitario En Informatica</h3>
-            
+            <h2 class="text-3xl font-bold mb-2 text-blue-400">Desarrollador Full Stack & Automatizaciones IA</h2>
+            <h3 class="text-xl font-semibold mb-4 opacity-80">Técnico Universitario en Informática</h3>
             <p class="text-lg text-balance mb-8">
-                Transformo ideas en aplicaciones web escalables. Mi enfoque combina el desarrollo Frontend, la arquitectura de datos y el aseguramiento de la calidad de software.
+                Diseño y desarrollo sistemas de gestión de punta a punta, traduciendo necesidades de negocio en software funcional. Combino desarrollo integral con automatizaciones inteligentes para optimizar procesos reales.
             </p>
 
             <div class="flex gap-8"> 
-                <a href="/CV_Lucas_Abalos.pdf" download class="border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-300 p-2 px-6 font-bold rounded-xl shadow-lg shadow-blue-500/10 text-center">Descargar CV</a>
+                <a href="/Cv_Abalos_Lucas.pdf" download class="border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-300 p-2 px-6 font-bold rounded-xl shadow-lg shadow-blue-500/10 text-center">Descargar CV</a>
                 <a href="#contactame" class="bg-blue-600 text-white hover:bg-blue-500 p-2 px-6 font-bold rounded-xl shadow-lg shadow-blue-600/30 transition-all duration-300 text-center">Contactame</a>
             </div>
         </div>
         
         <div class="hidden w-2/5 md:flex justify-end">
-            <img src="/Images/Logo/Portada.webp" alt="portada" class="max-w-full h-auto drop-shadow-2xl">
+            <BrowserCards />
         </div>
     </div>
 </section>

@@ -1,0 +1,18 @@
+---
+interface Props {
+    name: string;
+    logo: string;
+    accent: string;
+    imgClass?: string;
+    compact?: boolean;
+}
+
+const { name, logo, accent, imgClass = "", compact = false } = Astro.props;
+
+const nameClass = compact ? "text-sm md:text-xs leading-tight" : "text-sm";
+---
+
+<li class={`flex items-center gap-2.5 rounded-xl border px-4 py-2.5 text-white/70 transition-all duration-300 ${accent}`}>
+    <img src={logo} alt={name} loading="lazy" decoding="async" class={`w-6 h-6 md:w-7 md:h-7 shrink-0 object-contain ${imgClass}`} />
+    <span class={`font-medium min-w-0 ${nameClass}`}>{name}</span>
+</li>

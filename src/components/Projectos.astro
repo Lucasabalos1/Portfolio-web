@@ -6,10 +6,10 @@ const projects = await getCollection('project')
 ---
 
 <section id="proyectos" class="min-h-[30vh]">
-    <div class="w-11/12 my-4 mx-auto">
+    <div data-reveal="animate-zoom-in" class="w-full max-w-7xl mx-auto my-4 px-4 opacity-0">
         <h2 class="text-center py-10 text-5xl font-bold tracking-widest bg-linear-to-r from-white to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(96,165,250,0.5)] [text-shadow:0_0_15px_rgba(96,165,250,0.3)]">Mis Proyectos</h2>
         <span class="block text-center text-xl">Proyectos destacados que reflejan mi evolución técnica y compromiso con la calidad del código.</span>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 mt-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
             {projects.map((project) => {
                 const {id, data} = project
                 const {title, description, tags, image, link, code, gallery} = data
@@ -17,7 +17,7 @@ const projects = await getCollection('project')
                 return(
                     <article class="bg-blue-950/20 backdrop-blur-sm border border-blue-500/30 p-1 rounded-3xl group flex flex-col h-full">
                         <div class="rounded-2xl overflow-hidden border border-white/10 aspect-video">
-                            <img src={image} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" transition:name={`img-${id}`} alt="Proyecto-portada">
+                            <img src={image} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" transition:name={`img-${id}`} loading="lazy" decoding="async" alt={title}>
                         </div>
     
                         <h4 class="text-2xl font-bold py-3 pl-3">{title}</h4>
